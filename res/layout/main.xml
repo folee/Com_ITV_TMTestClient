@@ -35,48 +35,6 @@
             android:layout_height="wrap_content"
             android:text="IN-App Order Query" >
         </Button>
-        
-        <Button
-            android:id="@+id/Button03"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Install APK Via PackageInstaller" >
-        </Button>
-        
-        <Button
-            android:id="@+id/Button04"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Check WebView" >
-        </Button>
-        
-        <Button
-            android:id="@+id/Button05"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Check Browser" >
-        </Button>
-        
-        <Button
-            android:id="@+id/Button06"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Update OS" >
-        </Button>
-        
-        <Button
-            android:id="@+id/Button07"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Update Ani" >
-        </Button>
-        
-        <Button
-            android:id="@+id/Button08"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Update Logo" >
-        </Button>
 
     </LinearLayout>
 
