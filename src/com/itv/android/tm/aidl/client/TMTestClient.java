@@ -51,7 +51,7 @@ public class TMTestClient extends Activity implements OnClickListener {
 	private Button					btn10			= null;
 
 	private InAppOrderAidl			buyInAppService	= null;
-	// ´´½¨Ô¶³Ìµ÷ÓÃ¶ÔÏó
+	// ï¿½ï¿½ï¿½ï¿½Ô¶ï¿½Ìµï¿½ï¿½Ã¶ï¿½ï¿½ï¿½
 	private ServiceConnection		buyInAppConn	= new ServiceConnection() {
 
 														public void onServiceConnected(ComponentName name,
@@ -67,7 +67,7 @@ public class TMTestClient extends Activity implements OnClickListener {
 													};
 
 	private InAppQueryAidl			queryInAppService	= null;
-	// ´´½¨Ô¶³Ìµ÷ÓÃ¶ÔÏó
+	// ï¿½ï¿½ï¿½ï¿½Ô¶ï¿½Ìµï¿½ï¿½Ã¶ï¿½ï¿½ï¿½
 	private ServiceConnection		queryInAppConn	= new ServiceConnection() {
 
 														public void onServiceConnected(ComponentName name,
@@ -309,7 +309,7 @@ public class TMTestClient extends Activity implements OnClickListener {
 	}
 
 	/**
-	 * »ñÈ¡µ±Ç°Ê¹ÓÃµÄÍø¿¨Mac prop.AccessType : Wlan£ºÎÞÏßÁ¬½Ó Cable£ºÓÐÏßÁ¬½Ó
+	 * ï¿½ï¿½È¡ï¿½ï¿½Ç°Ê¹ï¿½Ãµï¿½ï¿½ï¿½Mac prop.AccessType : Wlanï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Cableï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	 * 
 	 * @return
 	 */
@@ -326,7 +326,7 @@ public class TMTestClient extends Activity implements OnClickListener {
 	}
 
 	/**
-	 * »ñÈ¡ÎÞÏßÍø¿¨µÄMac
+	 * ï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Mac
 	 * 
 	 * @return
 	 */
@@ -345,7 +345,7 @@ public class TMTestClient extends Activity implements OnClickListener {
 	}
 
 	/**
-	 * »ñÈ¡ÓÐÏßÍø¿¨µÄMac
+	 * ï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Mac
 	 * 
 	 * @return
 	 */
