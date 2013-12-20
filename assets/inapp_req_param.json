@@ -1,8 +1,8 @@
 {
   "APIversion": "1",
-  "APPUserName": "market2",
-  "packageName": "com.eutopia.game.fallingball",
-  "productID": "productIDa3000000000000000000154",
+  "APPUserName": "IN-APP测试",
+  "packageName": "com.itv.android.tm.test",
+  "productID": "productIDI5000000000000000000054",
   "SPID": "90000005",
   "SPPayload": "",
   "productOrderDescription": "",
@@ -10,6 +10,8 @@
   "timestamp": "20121231235959",
   "transactionID": "9000000520121231235959325113000000000000"
 }
+        
+        
         
         
         

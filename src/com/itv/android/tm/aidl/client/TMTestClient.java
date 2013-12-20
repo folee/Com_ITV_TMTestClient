@@ -15,6 +15,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.IBinder;
 import android.os.RemoteException;
+import android.provider.Settings;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.KeyEvent;
@@ -37,7 +38,6 @@ public class TMTestClient extends Activity implements OnClickListener {
 	private Button					btn10			= null;
 
 	private InAppOrderAidl			buyInAppService	= null;
-	// 创建远程调用对象
 	private ServiceConnection		buyInAppConn	= new ServiceConnection() {
 
 														public void onServiceConnected(ComponentName name,
@@ -53,7 +53,6 @@ public class TMTestClient extends Activity implements OnClickListener {
 													};
 
 	private InAppQueryAidl			queryInAppService	= null;
-	// 创建远程调用对象
 	private ServiceConnection		queryInAppConn	= new ServiceConnection() {
 
 														public void onServiceConnected(ComponentName name,
@@ -94,9 +93,25 @@ public class TMTestClient extends Activity implements OnClickListener {
 	protected void onResume() {
 		super.onResume();
 	}
+	
+	
+	private void netcheck(){
+        // 杩涘叆鏃犵嚎缃戠粶閰嶇疆鐣岄潰
+        startActivity(new Intent(Settings.ACTION_WIRELESS_SETTINGS));
+        
+        btn.postDelayed(new Runnable() {
+            
+            @Override
+            public void run() {
+                Log.d(TAG, "TMTestClient.this.finish(); ");
+                TMTestClient.this.finish();                
+            }
+        }, 10000);
+	}
 
 	@Override
 	public void finish() {
+	    Log.d(TAG, "--> finish()");
 		super.finish();
 		if (billingReceiver != null) {
 			unregisterReceiver(billingReceiver);
