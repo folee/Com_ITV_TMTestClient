@@ -10,7 +10,7 @@ import android.widget.Toast;
 public class BillingResultReceiver extends BroadcastReceiver {
 	private final String		TAG				= BillingResultReceiver.class.getSimpleName();
 	public static final String	BILLINGRESULT	= "BILLINGRESULT";
-	public static final String	INAPP_BILLING	= "com.itv.android.market2.billing.IN_APP_NOTIFY";
+	public static final String	INAPP_BILLING	= "com.ihome.android.market2.billing.IN_APP_NOTIFY";
 
 	public BillingResultReceiver() {
 		super();
@@ -28,7 +28,7 @@ public class BillingResultReceiver extends BroadcastReceiver {
 			}else{
 				Log.d(TAG, " --> BILLINGRESULT = " + result);
 				Toast.makeText(context, "----------INAPP_BILLING SUCCESS----------", Toast.LENGTH_LONG).show();
-				//TODO Õâ±ß×öÊý¾Ý´¦Àí»ò´«µÝ
+				//TODO è¿™è¾¹åšæ•°æ®å¤„ç†æˆ–ä¼ é€’
 			}
 		}
 	}

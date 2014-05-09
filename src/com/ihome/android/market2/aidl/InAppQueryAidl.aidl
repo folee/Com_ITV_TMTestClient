@@ -1,4 +1,4 @@
-package com.itv.android.market2.aidl;
+package com.ihome.android.market2.aidl;
 
 interface InAppQueryAidl{
 	/**

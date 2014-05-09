@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="hello">Hello, TMTestClient!</string>
-    <string name="app_name">TMTestClient</string>
+    <string name="app_name">IN-APP-Demo</string>
 </resources>

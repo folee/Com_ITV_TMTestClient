@@ -23,8 +23,8 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 
-import com.itv.android.market2.aidl.InAppOrderAidl;
-import com.itv.android.market2.aidl.InAppQueryAidl;
+import com.ihome.android.market2.aidl.InAppOrderAidl;
+import com.ihome.android.market2.aidl.InAppQueryAidl;
 import com.itv.android.tm.aidl.client.broadcast.BillingResultReceiver;
 import com.itv.android.tm.test.R;
 
