@@ -27,7 +27,12 @@ public class BillingResultReceiver extends BroadcastReceiver {
 				
 			}else{
 				Log.d(TAG, " --> BILLINGRESULT = " + result);
-				Toast.makeText(context, "----------INAPP_BILLING SUCCESS----------", Toast.LENGTH_LONG).show();
+				if(result.contains("\"code\":0")){
+					Toast.makeText(context, "----------INAPP_BILLING SUCCESS----------", Toast.LENGTH_LONG).show();
+				}else{
+					Toast.makeText(context, "----------INAPP_BILLING FAILURE----------", Toast.LENGTH_LONG).show();
+				}
+				
 				//TODO 这边做数据处理或传递
 			}
 		}
