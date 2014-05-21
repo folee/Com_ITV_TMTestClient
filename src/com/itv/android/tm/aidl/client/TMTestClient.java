@@ -116,6 +116,12 @@ public class TMTestClient extends Activity implements OnClickListener {
 		if (billingReceiver != null) {
 			unregisterReceiver(billingReceiver);
 		}
+		
+		if(buyInAppService != null)
+			unbindService(buyInAppConn);
+		if(queryInAppService != null)
+			unbindService(queryInAppConn);
+			
 	}
 
 	public void onClick(View v) {
