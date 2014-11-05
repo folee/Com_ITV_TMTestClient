@@ -23,6 +23,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 
+import com.ihome.android.market2.aidl.AppOperateAidl;
 import com.ihome.android.market2.aidl.InAppOrderAidl;
 import com.ihome.android.market2.aidl.InAppQueryAidl;
 import com.itv.android.tm.aidl.client.broadcast.BillingResultReceiver;
@@ -30,42 +31,52 @@ import com.itv.android.tm.test.R;
 
 @TargetApi(Build.VERSION_CODES.GINGERBREAD)
 public class TMTestClient extends Activity implements OnClickListener {
-	private static final String		TAG				= TMTestClient.class.getSimpleName();
+	private static final String		TAG					= TMTestClient.class.getSimpleName();
 	/** Called when the activity is first created. */
-	private Button					btn				= null;
-	private Button					btn2			= null;
-	private Button					btn9			= null;
-	private Button					btn10			= null;
+	private Button					btn					= null;
+	private Button					btn2				= null;
+	private Button					btn9				= null;
+	private Button					btn10				= null;
+	private Button					btn11				= null;
 
-	private InAppOrderAidl			buyInAppService	= null;
-	private ServiceConnection		buyInAppConn	= new ServiceConnection() {
+	private InAppOrderAidl			buyInAppService		= null;
+	private ServiceConnection		buyInAppConn		= new ServiceConnection() {
 
-														public void onServiceConnected(ComponentName name,
-																IBinder service) {
-															buyInAppService = InAppOrderAidl.Stub.asInterface(service);
-															Log.d(TAG, "InAppOrderAidl --> Bind Success:"
-																	+ buyInAppService);
-														}
+															public void onServiceConnected(ComponentName name, IBinder service) {
+																buyInAppService = InAppOrderAidl.Stub.asInterface(service);
+																Log.d(TAG, "InAppOrderAidl --> Bind Success:" + buyInAppService);
+															}
 
-														public void onServiceDisconnected(ComponentName name) {
-															buyInAppService = null;
-														}
-													};
+															public void onServiceDisconnected(ComponentName name) {
+																buyInAppService = null;
+															}
+														};
 
 	private InAppQueryAidl			queryInAppService	= null;
-	private ServiceConnection		queryInAppConn	= new ServiceConnection() {
+	private ServiceConnection		queryInAppConn		= new ServiceConnection() {
 
-														public void onServiceConnected(ComponentName name,
-																IBinder service) {
-															queryInAppService = InAppQueryAidl.Stub.asInterface(service);
-															Log.d(TAG, "InAppQueryAidl --> Bind Success:"
-																	+ queryInAppService);
-														}
+															public void onServiceConnected(ComponentName name, IBinder service) {
+																queryInAppService = InAppQueryAidl.Stub.asInterface(service);
+																Log.d(TAG, "InAppQueryAidl --> Bind Success:" + queryInAppService);
+															}
 
-														public void onServiceDisconnected(ComponentName name) {
-															queryInAppService = null;
-														}
-													};
+															public void onServiceDisconnected(ComponentName name) {
+																queryInAppService = null;
+															}
+														};
+
+	private AppOperateAidl			appOperateService	= null;
+	private ServiceConnection		appOperateConn		= new ServiceConnection() {
+
+															public void onServiceConnected(ComponentName name, IBinder service) {
+																appOperateService = AppOperateAidl.Stub.asInterface(service);
+																Log.d(TAG, "AppOperateAidl --> Bind Success:" + appOperateService);
+															}
+
+															public void onServiceDisconnected(ComponentName name) {
+																appOperateService = null;
+															}
+														};
 
 	private BillingResultReceiver	billingReceiver;
 
@@ -78,10 +89,12 @@ public class TMTestClient extends Activity implements OnClickListener {
 		btn2 = (Button) findViewById(R.id.Button02);
 		btn9 = (Button) findViewById(R.id.Button09);
 		btn10 = (Button) findViewById(R.id.Button10);
+		btn11 = (Button) findViewById(R.id.Button11);
 		btn.setOnClickListener(this);
 		btn2.setOnClickListener(this);
 		btn9.setOnClickListener(this);
 		btn10.setOnClickListener(this);
+		btn11.setOnClickListener(this);
 
 		billingReceiver = new BillingResultReceiver();
 		IntentFilter intentFilter = new IntentFilter();
@@ -93,35 +106,36 @@ public class TMTestClient extends Activity implements OnClickListener {
 	protected void onResume() {
 		super.onResume();
 	}
-	
-	
-	private void netcheck(){
-        // 进入无线网络配置界面
-        startActivity(new Intent(Settings.ACTION_WIRELESS_SETTINGS));
-        
-        btn.postDelayed(new Runnable() {
-            
-            @Override
-            public void run() {
-                Log.d(TAG, "TMTestClient.this.finish(); ");
-                TMTestClient.this.finish();                
-            }
-        }, 10000);
+
+	private void netcheck() {
+		// 进入无线网络配置界面
+		startActivity(new Intent(Settings.ACTION_WIRELESS_SETTINGS));
+
+		btn.postDelayed(new Runnable() {
+
+			@Override
+			public void run() {
+				Log.d(TAG, "TMTestClient.this.finish(); ");
+				TMTestClient.this.finish();
+			}
+		}, 10000);
 	}
 
 	@Override
 	public void finish() {
-	    Log.d(TAG, "--> finish()");
+		Log.d(TAG, "--> finish()");
 		super.finish();
 		if (billingReceiver != null) {
 			unregisterReceiver(billingReceiver);
 		}
-		
-		if(buyInAppService != null)
+
+		if (buyInAppService != null)
 			unbindService(buyInAppConn);
-		if(queryInAppService != null)
+		if (queryInAppService != null)
 			unbindService(queryInAppConn);
-			
+		if (appOperateService != null)
+			unbindService(appOperateConn);
+
 	}
 
 	public void onClick(View v) {
@@ -132,6 +146,8 @@ public class TMTestClient extends Activity implements OnClickListener {
 				bindService(buyservice, buyInAppConn, BIND_AUTO_CREATE);
 				Intent queryservice = new Intent(InAppQueryAidl.class.getName());
 				bindService(queryservice, queryInAppConn, BIND_AUTO_CREATE);
+				Intent appservice = new Intent(AppOperateAidl.class.getName());
+				bindService(appservice, appOperateConn, BIND_AUTO_CREATE);
 				break;
 
 			case R.id.Button02:
@@ -143,11 +159,11 @@ public class TMTestClient extends Activity implements OnClickListener {
 				}
 				break;
 			case R.id.Button09:
-				
+
 				if (queryInAppService != null) {
 					String queryResult = queryInAppService.detailsQuery(getTestDataFromAssets(this, "inapp_product_query_req_param.json"));
-				
-					if(!TextUtils.isEmpty(queryResult))
+
+					if (!TextUtils.isEmpty(queryResult))
 						Log.d(TAG, "In-App Product Query Result = " + queryResult);
 					else
 						Log.e(TAG, "In-App Product Query Failed! ");
@@ -157,17 +173,32 @@ public class TMTestClient extends Activity implements OnClickListener {
 				}
 				break;
 			case R.id.Button10:
-				
+
 				if (queryInAppService != null) {
 					String queryResult = queryInAppService.orderRecordQuery(getTestDataFromAssets(this, "inapp_order_query_req_param.json"));
-				
-					if(!TextUtils.isEmpty(queryResult))
+
+					if (!TextUtils.isEmpty(queryResult))
 						Log.d(TAG, "In-App Order Query Result = " + queryResult);
 					else
 						Log.e(TAG, "In-App Order Query Failed! ");
 				}
 				else {
 					Log.e(TAG, "queryInAppService = NULL ");
+				}
+				break;
+				
+			case R.id.Button11:
+
+				if (appOperateService != null) {
+					String appResult = appOperateService.appOperate("{appId:\"123\", apkPath:\"/mnt/sdcard/Market/Downloads/meishijie.apk\"}");
+
+					if (!TextUtils.isEmpty(appResult))
+						Log.d(TAG, "APP Install Result = " + appResult);
+					else
+						Log.e(TAG, "APP Install Failed! ");
+				}
+				else {
+					Log.e(TAG, "appOperateService = NULL ");
 				}
 				break;
 			}
@@ -221,7 +252,5 @@ public class TMTestClient extends Activity implements OnClickListener {
 		inStream.close();
 		return outStream.toByteArray();
 	}
-
-
 
 }

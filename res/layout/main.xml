@@ -35,6 +35,14 @@
             android:layout_height="wrap_content"
             android:text="IN-App Order Query" >
         </Button>
+        
+        <Button
+            android:id="@+id/Button11"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            android:text="Install APP" >
+        </Button>
 
     </LinearLayout>
 
