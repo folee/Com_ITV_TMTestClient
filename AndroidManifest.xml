@@ -1,20 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.itv.android.tm.test"
-    android:versionCode="1"
-    android:versionName="1.0" >
+    android:versionCode="10"
+    android:versionName="2.0.0" >
 
-    <uses-permission android:name="com.itv.android.tm.SERVICES"/>
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.WRITE_SETTINGS" />
-    <uses-permission android:name="android.permission.WRITE_SECURE_SETTINGS" />
     
     <application
         android:icon="@drawable/icon"
         android:label="@string/app_name" >
         <activity
-            android:name="com.itv.android.tm.aidl.client.TMTestClient"
+            android:name="com.itv.android.tm.test.TMTestClient"
             android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen"
             android:label="@string/app_name" >
             <intent-filter>
@@ -24,12 +22,6 @@
             </intent-filter>
         </activity>
         
-        <activity
-            android:name="com.itv.android.tm.aidl.client.WebViewActivity"
-            android:launchMode="singleTask"
-            android:noHistory="true"
-            android:theme="@android:style/Theme.NoTitleBar.Fullscreen" >
-        </activity>
     </application>
 
     <uses-sdk android:minSdkVersion="3" />

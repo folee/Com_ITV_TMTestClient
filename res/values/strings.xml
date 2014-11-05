@@ -1,4 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">IN-APP-Demo</string>
+
+    <string name="app_name">App-Update-Demo</string>
+    <string name="ok">确认</string>
+    <string name="cancel">取消</string>
+    <string name="upgrade_tip">有更新，请立即更新！</string>
+
 </resources>

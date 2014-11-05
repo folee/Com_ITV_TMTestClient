@@ -12,36 +12,7 @@
             android:id="@+id/Button01"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Bind AIDL" >
-        </Button>
-
-        <Button
-            android:id="@+id/Button02"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Buy IN-App" >
-        </Button>
-        
-        <Button
-            android:id="@+id/Button09"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="IN-App Query" >
-        </Button>
-        
-        <Button
-            android:id="@+id/Button10"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="IN-App Order Query" >
-        </Button>
-        
-        <Button
-            android:id="@+id/Button11"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:visibility="gone"
-            android:text="Install APP" >
+            android:text="Check Update" >
         </Button>
 
     </LinearLayout>
